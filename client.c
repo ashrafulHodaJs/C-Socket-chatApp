@@ -26,16 +26,15 @@ int main()
     if (res < 0)
     {
         perror("Connection failed");
-        return 1; // Handle error
+        return 1; 
     }
     puts("Connection was successful");
 
-    // Correctly formatted HTTP GET request
     char *msg = "GET / HTTP/1.1\r\nHost: google.com\r\nConnection: close\r\n\r\n";
     if (send(SOCK, msg, strlen(msg), 0) < 0)
     {
         perror("Send failed");
-        return 1; // Handle error
+        return 1; 
     }
 
     char buffer[1024]; // Buffer to receive response
@@ -43,13 +42,12 @@ int main()
     if (bytes_received < 0)
     {
         perror("Receive failed");
-        return 1; // Handle error
+        return 1; 
     }
 
     buffer[bytes_received] = '\0'; // Null-terminate the buffer
     printf("YOUR RESULT IS:\n%s\n", buffer);
 
-    // Close the socket
-    // close(SOCK);
-    return 0; // Exit the program
+   
+    return 0; 
 }
